@@ -1,19 +1,30 @@
 // (C)opyright 2021 Dirk Holtwick, holtwick.it. All rights reserved.
 
-import { Logger } from "zeed"
-import { on, emit, register } from "zerva"
+import { Logger, LoggerNodeHandler, LogLevel } from "zeed"
 
-const name = "counter"
+Logger.setHandlers([
+  LoggerNodeHandler({
+    // level: LogLevel.info,
+    filter: "*",
+    colors: true,
+    padding: 16,
+    nameBrackets: false,
+    levelHelper: false,
+  }),
+])
+
+const name = "vite"
 const log = Logger(`zerva:${name}`)
 
-export function useCounter() {
-  log.info("use counter")
-  register("counter", ["http"])
-  let counter = 0
-  on("httpInit", ({ get }) => {
-    get("/", async () => {
-      await emit("counterIncrement", ++counter)
-      return `Counter ${counter}.<br><br>Reload page to increase counter.`
+export const viteZervaPlugin = () => ({
+  name: "configure-server",
+  configureServer(server: any) {
+    log("configure", Object.keys(server))
+
+    server.middlewares.use((req, res, next) => {
+      // custom handle request...
+      log("req", req.url) // Object.keys(req))
+      next()
     })
-  })
-}
+  },
+})
