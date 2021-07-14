@@ -1,7 +1,7 @@
 {
-  "name": "zerva-module-template",
+  "name": "zerva-vite-plugin",
   "version": "0.1.4",
-  "description": "🌱 Zerva module template",
+  "description": "🌱 Zerva vite plugin",
   "funding": {
     "type": "GitHub Sponsors ❤",
     "url": "https://github.com/sponsors/holtwick"
@@ -35,7 +35,7 @@
     "node": ">=14.13.1"
   },
   "scripts": {
-    "start": "npm run watch",
+    "start": "vite",
     "build": "npm run clean && npm run build:tsup",
     "build:esm": "tsc -p tsconfig.json",
     "build:tsup": "tsup src/index.ts --dts --sourcemap --format esm,cjs",
@@ -48,7 +48,8 @@
   },
   "dependencies": {
     "zeed": "^0.4.2",
-    "zerva": "^0.3.1"
+    "zerva": "^0.3.1",
+    "vue": "^3.0.5"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
@@ -59,6 +60,10 @@
     "node-fetch": "^2.6.1",
     "ts-jest": "^27.0.3",
     "tsup": "^4.12.5",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "vite": "^2.4.2",
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vue-tsc": "^0.0.24"
   }
 }
