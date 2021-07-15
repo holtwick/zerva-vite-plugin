@@ -4,75 +4,10 @@ import io from "socket.io-client"
 
 const log = Logger("socketio-conn")
 
-// export interface VRoomJoinSuccess {
-//   success: true
-//   token: string
-//   peerData: string[]
-//   userInfo?: any
-// }
-
-// export interface VRoomJoinError {
-//   success: false
-//   error: string
-//   userInfo?: any
-// }
-
-// export interface VRoomRequestSuccess {
-//   success: true
-//   data: string // Secret reply
-//   userInfo?: any
-// }
-
-// export interface VRoomRequestError {
-//   success: false
-//   authFailed: boolean
-//   error: string
-//   userInfo?: any
-// }
-
-// //
-
-// export type VHistorySubscriptionToken = string
-
-// export interface VHistoryItem {
-//   module: string
-//   info: any
-// }
-
-//
-
 export interface SocketEvents {
   serverPing(data: any): any
   serverPong(data: any): any
   serverConfig(): any
-
-  /** New peer asks to join the `room`. `data` contains verification data, usually encrypted. */
-  // roomJoin(msg: {
-  //   room: string
-  //   data: string
-  // }): Promise<VRoomJoinSuccess | VRoomJoinError>
-
-  // /** On join one of the peers is asked to verify the request. If `success = true` the new peer is allowed to join. */
-  // roomRequest(msg: {
-  //   room: string
-  //   data: string
-  // }): Promise<VRoomRequestSuccess | VRoomRequestError>
-
-  // // roomStatus(msg: { role: VRoomRole }): boolean
-
-  // /** For debugging only */
-  // // roomInfo(msg: { room: string }): Promise<VRoomDescription>
-
-  // roomSignal(msg: { id: string; data: string }): Promise<boolean>
-
-  // roomLeft(msg: { id: string }): Promise<void>
-
-  // historySubscribe(): VHistorySubscriptionToken
-  // historyUnsubscribe(token: VHistorySubscriptionToken): boolean
-  // history(msg: {
-  //   token: VHistorySubscriptionToken
-  //   history: VHistoryItem[]
-  // }): void
 }
 
 export class ZSocketIOConnection {
@@ -168,6 +103,7 @@ export class ZSocketIOConnection {
     socket.on("disconnect", (err) => conn.close())
     return conn
   }
+
   // static async broadcast<U extends keyof SocketEvents>(
   //   connections: Connection[],
   //   event: U,
