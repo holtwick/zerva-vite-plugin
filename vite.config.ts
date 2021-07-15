@@ -1,6 +1,6 @@
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
-import { viteZervaPlugin } from "./src/module"
+import { viteZervaPlugin } from "./plugin"
 import { useSocketIO } from "zerva-socketio"
 
 useSocketIO({})
