@@ -48,10 +48,10 @@
     "global": "pnpm -g ln"
   },
   "dependencies": {
-    "vue": "^3.0.5",
+    "vue": "^3.1.4",
     "zeed": "^0.5.0",
     "zerva": "^0.3.4",
-    "zerva-socketio": "^0.2.0"
+    "zerva-socketio": "^0.2.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
