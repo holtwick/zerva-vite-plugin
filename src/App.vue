@@ -5,7 +5,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue"
 import { Logger, uuid } from "zeed"
-import { ZSocketIOConnection } from "./browser"
+import { ZSocketIOConnection } from "zerva-socketio"
 
 const log = Logger("app")
 const conn = ZSocketIOConnection.connect("ws://localhost:3000")
