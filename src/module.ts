@@ -1,7 +1,7 @@
 // (C)opyright 2021 Dirk Holtwick, holtwick.it. All rights reserved.
 
 import { Logger, LoggerNodeHandler, LogLevel } from "zeed"
-import { emit, httpGetHandler, promisify } from "zerva"
+import { emit, httpGetHandler, promisify, register } from "zerva"
 
 Logger.setHandlers([
   LoggerNodeHandler({
@@ -17,7 +17,7 @@ Logger.setHandlers([
 const name = "vite"
 const log = Logger(`zerva:${name}`)
 
-export const viteZervaPlugin = () => ({
+export const viteZervaPlugin = (setup?: () => void) => ({
   name: "vite-zerva",
   async configureServer(server: any) {
     log("configure", Object.keys(server))
@@ -38,16 +38,25 @@ export const viteZervaPlugin = () => ({
       })
     }
 
+    // Pretend being a regular http module
+    register("http")
+
+    // Now call setup that depends on http
+    if (setup) {
+      setup()
+    }
+
+    // Get started
     await emit("httpInit", {
       app,
       http: server.httpServer,
       get,
     })
 
-    server.middlewares.use((req, res, next) => {
-      // custom handle request...
-      log("req", req.url) // Object.keys(req))
-      next()
-    })
+    // server.middlewares.use((req, res, next) => {
+    //   // custom handle request...
+    //   log("req", req.url) // Object.keys(req))
+    //   next()
+    // })
   },
 })

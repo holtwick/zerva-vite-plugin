@@ -152,7 +152,7 @@ export class ZSocketIOConnection {
     this.socket = undefined
   }
 
-  static connect(host: string): Connection {
+  static connect(host: string): ZSocketIOConnection {
     log("connect", host)
     const socket = io(host, {
       reconnectionDelayMax: 3000,
