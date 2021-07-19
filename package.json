@@ -1,6 +1,6 @@
 {
   "name": "zerva-vite-plugin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "🌱 Zerva vite plugin",
   "funding": {
     "type": "GitHub Sponsors ❤",
@@ -43,22 +43,22 @@
     "check": "tsc --noEmit -p tsconfig.json",
     "clean": "rm -rf dist",
     "watch": "tsc -w -p tsconfig.json",
-    "prepublishOnly": "npm test && npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest src",
     "global": "pnpm -g ln"
   },
   "dependencies": {
-    "vue": "^3.0.5",
-    "zeed": "^0.4.2",
-    "zerva": "^0.3.1",
-    "zerva-socketio": "link:../zerva-socketio"
+    "vue": "^3.1.4",
+    "zeed": "^0.5.3",
+    "zerva": "^0.3.6",
+    "zerva-socketio": "^0.2.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/node": "^16.3.2",
+    "@types/node": "^16.3.3",
     "@types/node-fetch": "^2.5.11",
     "@vitejs/plugin-vue": "^1.2.5",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/compiler-sfc": "^3.1.5",
     "jest": "^27.0.6",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
@@ -66,6 +66,6 @@
     "tsup": "^4.12.5",
     "typescript": "^4.3.5",
     "vite": "^2.4.2",
-    "vue-tsc": "^0.0.24"
+    "vue-tsc": "^0.2.1"
   }
 }

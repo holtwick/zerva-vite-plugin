@@ -8,6 +8,8 @@ import { Logger, uuid } from "zeed"
 import { ZSocketIOConnection } from "zerva-socketio"
 
 const log = Logger("app")
+log("app")
+
 const conn = ZSocketIOConnection.connect("ws://localhost:3000")
 
 export default defineComponent({

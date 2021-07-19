@@ -1,7 +1,14 @@
 // (C)opyright 2021 Dirk Holtwick, holtwick.it. All rights reserved.
 
-import { Logger, LoggerNodeHandler, LogLevel } from "zeed"
-import { emit, httpGetHandler, promisify, register } from "zerva"
+import { Logger, LoggerNodeHandler } from "zeed"
+import {
+  emit,
+  httpGetHandler,
+  promisify,
+  register,
+  setContext,
+  serveStop,
+} from "zerva"
 
 Logger.setHandlers([
   LoggerNodeHandler({
@@ -17,10 +24,15 @@ Logger.setHandlers([
 const name = "vite"
 const log = Logger(`zerva:${name}`)
 
+// A fresh start, otherwise old contexts hang around
+serveStop()
+setContext()
+
 export const viteZervaPlugin = (setup?: () => void) => ({
   name: "vite-zerva",
   async configureServer(server: any) {
-    log("configure", Object.keys(server))
+    console.info("Starting zerva for vite...")
+    // log("configure", Object.keys(server))
 
     const { app } = server
 
