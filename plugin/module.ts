@@ -8,6 +8,8 @@ import {
   register,
   setContext,
   serveStop,
+  onInit,
+  hasModule,
 } from "zerva"
 
 Logger.setHandlers([
@@ -39,7 +41,8 @@ export const viteZervaPlugin = (setup?: () => void) => ({
       }
       log(`register get ${path}`)
 
-      // https://github.com/senchalabs/connect
+      // https://vitejs.dev/guide/api-javascript.html#vitedevserver
+      // https://github.com/senchalabs/connect#readme
       // @ts-ignore
       server.middlewares.use((req, res, next) => {
         if (!req.url.startsWith(path)) next()
@@ -70,6 +73,14 @@ export const viteZervaPlugin = (setup?: () => void) => ({
     if (setup) {
       setup()
     }
+
+    onInit(() => {
+      if (hasModule("http")) {
+        log.warn(
+          "Better not call useHttp, instead reuse the vite http sever via httpInit event"
+        )
+      }
+    })
 
     // Get started
     await emit("httpInit", {
