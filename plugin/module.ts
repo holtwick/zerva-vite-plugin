@@ -31,6 +31,7 @@ setContext()
 export const viteZervaPlugin = (setup?: () => void) => ({
   name: "vite-zerva",
   async configureServer(server: any) {
+    console.info("Starting zerva for vite...")
     // log("configure", Object.keys(server))
 
     const { app } = server

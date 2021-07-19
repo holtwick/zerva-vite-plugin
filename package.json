@@ -49,16 +49,16 @@
   },
   "dependencies": {
     "vue": "^3.1.4",
-    "zeed": "^0.5.0",
-    "zerva": "^0.3.4",
-    "zerva-socketio": "^0.2.1"
+    "zeed": "^0.5.3",
+    "zerva": "^0.3.6",
+    "zerva-socketio": "^0.2.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/node": "^16.3.2",
+    "@types/node": "^16.3.3",
     "@types/node-fetch": "^2.5.11",
     "@vitejs/plugin-vue": "^1.2.5",
-    "@vue/compiler-sfc": "^3.1.4",
+    "@vue/compiler-sfc": "^3.1.5",
     "jest": "^27.0.6",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
