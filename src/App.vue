@@ -13,7 +13,6 @@ log("app")
 const conn = ZSocketIOConnection.connect("ws://localhost:3000")
 
 export default defineComponent({
-  name: "App",
   setup() {
     let pong = ref("")
     conn.emit("serverPing", { echo: uuid() }).then((r: any) => {
