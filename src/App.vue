@@ -1,5 +1,8 @@
 <template>
-  <div>Hello Zerva {{ pong }}</div>
+  <div>Hello Vite {{ pong }}</div>
+  <div>
+    <iframe src="/zerva"></iframe>
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,7 +16,6 @@ log("app")
 const conn = ZSocketIOConnection.connect("ws://localhost:3000")
 
 export default defineComponent({
-  name: "App",
   setup() {
     let pong = ref("")
     conn.emit("serverPing", { echo: uuid() }).then((r: any) => {

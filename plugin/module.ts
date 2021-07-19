@@ -32,20 +32,33 @@ export const viteZervaPlugin = (setup?: () => void) => ({
   name: "vite-zerva",
   async configureServer(server: any) {
     console.info("Starting zerva for vite...")
-    // log("configure", Object.keys(server))
-
-    const { app } = server
 
     function get(path: string, handler: httpGetHandler): void {
       if (!path.startsWith("/")) {
         path = `/${path}`
       }
       log(`register get ${path}`)
-      app.get(path, async (req: any, res: any) => {
-        log(`get ${path}`)
-        let result = await promisify(handler({ res, req }))
-        if (result != null) {
-          res.send(result)
+
+      // https://github.com/senchalabs/connect
+      // @ts-ignore
+      server.middlewares.use((req, res, next) => {
+        if (!req.url.startsWith(path)) next()
+        else {
+          // custom handle request...
+          log("req", req.url) // Object.keys(req))
+          if (typeof handler === "string") {
+            res.end(handler)
+          } else {
+            promisify(handler({ res, req }))
+              .then((result) => {
+                if (result != null) {
+                  res.end(result)
+                }
+              })
+              .catch((err) => {
+                next(err)
+              })
+          }
         }
       })
     }
@@ -60,15 +73,9 @@ export const viteZervaPlugin = (setup?: () => void) => ({
 
     // Get started
     await emit("httpInit", {
-      app,
+      app: null,
       http: server.httpServer,
       get,
     })
-
-    // server.middlewares.use((req, res, next) => {
-    //   // custom handle request...
-    //   log("req", req.url) // Object.keys(req))
-    //   next()
-    // })
   },
 })

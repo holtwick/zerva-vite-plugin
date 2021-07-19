@@ -1,6 +1,6 @@
 {
   "name": "zerva-vite-plugin",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "🌱 Zerva vite plugin",
   "funding": {
     "type": "GitHub Sponsors ❤",
@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "vue": "^3.1.4",
-    "zeed": "^0.5.3",
+    "zeed": "^0.5.6",
     "zerva": "^0.3.6",
     "zerva-socketio": "^0.2.2"
   },
