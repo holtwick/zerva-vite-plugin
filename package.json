@@ -9,7 +9,9 @@
   "keywords": [
     "server",
     "typescript",
-    "event"
+    "event",
+    "vite",
+    "vue"
   ],
   "author": {
     "name": "Dirk Holtwick",
@@ -35,37 +37,31 @@
     "node": ">=14.13.1"
   },
   "scripts": {
-    "start": "vite",
+    "start": "npm run build",
     "build": "npm run clean && npm run build:tsup",
     "build:esm": "tsc -p tsconfig.json",
-    "build:vite": "vite build",
-    "build:tsup": "tsup plugin/index.ts --dts --sourcemap --format esm,cjs",
+    "build:tsup": "tsup src/index.ts src/index.browser.ts --dts --sourcemap --format esm,cjs",
     "check": "tsc --noEmit -p tsconfig.json",
     "clean": "rm -rf dist",
-    "watch": "tsc -w -p tsconfig.json",
     "prepublishOnly": "npm run build",
-    "test": "jest src",
-    "global": "pnpm -g ln"
+    "test": "jest src"
   },
   "dependencies": {
-    "vue": "^3.1.4",
-    "zeed": "^0.5.6",
-    "zerva": "^0.3.6",
-    "zerva-socketio": "^0.2.2"
+    "zeed": "^0.5.12",
+    "zerva": "^0.4.13"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/node": "^16.3.3",
-    "@types/node-fetch": "^2.5.11",
-    "@vitejs/plugin-vue": "^1.2.5",
+    "@types/node": "^16.4.13",
+    "@types/node-fetch": "^2.5.12",
+    "@vitejs/plugin-vue": "^1.4.0",
     "@vue/compiler-sfc": "^3.1.5",
     "jest": "^27.0.6",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
-    "ts-jest": "^27.0.3",
-    "tsup": "^4.12.5",
+    "ts-jest": "^27.0.4",
+    "tsup": "^4.13.1",
     "typescript": "^4.3.5",
-    "vite": "^2.4.2",
-    "vue-tsc": "^0.2.1"
+    "vue-tsc": "^0.2.2"
   }
 }
