@@ -1,5 +1,5 @@
 <template>
-  <div>Hello Vite {{ pong }}</div>
+  <div>Hello Vite, pong via socket.io => {{ pong }}</div>
   <div>
     <iframe src="/zerva"></iframe>
     <iframe src="/data.json"></iframe>
@@ -14,7 +14,7 @@ import { ZSocketIOConnection } from "zerva-socketio"
 const log = Logger("app")
 log("app")
 
-const conn = ZSocketIOConnection.connect("ws://localhost:3000")
+const conn = ZSocketIOConnection.connect("ws://" + location.host)
 
 export default defineComponent({
   setup() {

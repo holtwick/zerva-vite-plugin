@@ -93,6 +93,9 @@ export const viteZervaPlugin = (setup?: () => void) => ({
       app: null,
       http: server.httpServer,
       get,
+      addStatic: () => {
+        log.info("http.addStatic is ignored")
+      },
     })
   },
 })
