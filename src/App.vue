@@ -2,6 +2,7 @@
   <div>Hello Vite {{ pong }}</div>
   <div>
     <iframe src="/zerva"></iframe>
+    <iframe src="/data.json"></iframe>
   </div>
 </template>
 

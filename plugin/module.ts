@@ -55,6 +55,12 @@ export const viteZervaPlugin = (setup?: () => void) => ({
             promisify(handler({ res, req }))
               .then((result) => {
                 if (result != null) {
+                  res.setHeader("Cache-Control", "no-cache")
+                  res.setHeader("Access-Control-Allow-Origin", "*")
+                  if (typeof result !== "string") {
+                    res.setHeader("Content-Type", "text/json")
+                    result = JSON.stringify(result, null, 2)
+                  }
                   res.end(result)
                 }
               })
