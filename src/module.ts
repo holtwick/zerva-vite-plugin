@@ -26,7 +26,7 @@ Logger.setHandlers([
 const name = "vite"
 const log = Logger(`zerva:${name}`)
 
-export const viteZervaPlugin: any = (setup?: () => void) => ({
+export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
   name: "vite-zerva",
   apply: "serve",
   async configureServer(server: any) {
@@ -78,7 +78,7 @@ export const viteZervaPlugin: any = (setup?: () => void) => ({
 
     // Now call setup that depends on http
     if (setup) {
-      setup()
+      await promisify(setup())
     }
 
     onInit(() => {
