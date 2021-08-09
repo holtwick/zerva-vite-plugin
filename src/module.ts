@@ -26,14 +26,15 @@ Logger.setHandlers([
 const name = "vite"
 const log = Logger(`zerva:${name}`)
 
-// A fresh start, otherwise old contexts hang around
-serveStop()
-setContext()
-
-export const viteZervaPlugin = (setup?: () => void) => ({
+export const viteZervaPlugin: any = (setup?: () => void) => ({
   name: "vite-zerva",
+  apply: "serve",
   async configureServer(server: any) {
     console.info("Starting zerva for vite...")
+
+    // A fresh start, otherwise old contexts hang around
+    serveStop()
+    setContext()
 
     function get(path: string, handler: httpGetHandler): void {
       if (!path.startsWith("/")) {

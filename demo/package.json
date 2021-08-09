@@ -7,7 +7,8 @@
     "node": ">=14.13.1"
   },
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "vue": "^3.1.4",
