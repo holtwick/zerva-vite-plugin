@@ -1,13 +1,14 @@
 {
   "name": "zerva-vite-plugin-demo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "🌱 Zerva vite plugin demo",
   "type": "module",
   "engines": {
     "node": ">=14.13.1"
   },
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "vue": "^3.1.4",
