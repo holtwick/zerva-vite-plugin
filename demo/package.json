@@ -1,6 +1,6 @@
 {
   "name": "zerva-vite-plugin-demo",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "🌱 Zerva vite plugin demo",
   "type": "module",
   "engines": {
@@ -12,24 +12,24 @@
   },
   "dependencies": {
     "vue": "^3.1.4",
-    "zeed": "^0.5.12",
-    "zerva": "^0.4.13",
-    "zerva-socketio": "^0.2.2",
+    "zeed": "^0.6.5",
+    "zerva": "^0.4.23",
+    "zerva-socketio": "^0.2.3",
     "zerva-vite-plugin": "link:.."
   },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.4.13",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.6.1",
     "@types/node-fetch": "^2.5.12",
     "@vitejs/plugin-vue": "^1.4.0",
-    "@vue/compiler-sfc": "^3.1.5",
+    "@vue/compiler-sfc": "^3.2.3",
     "jest": "^27.0.6",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
-    "ts-jest": "^27.0.4",
-    "tsup": "^4.13.1",
+    "ts-jest": "^27.0.5",
+    "tsup": "^4.14.0",
     "typescript": "^4.3.5",
-    "vite": "^2.4.4",
-    "vue-tsc": "^0.2.2"
+    "vite": "^2.5.0",
+    "vue-tsc": "^0.2.3"
   }
 }

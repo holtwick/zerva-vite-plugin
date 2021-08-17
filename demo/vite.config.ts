@@ -7,7 +7,7 @@ import { on } from "zerva"
 import { Logger } from "zeed"
 const log = Logger("demo")
 
-const zervaSetup = () => {
+const zervaSetup = async () => {
   useSocketIO()
   on("httpInit", ({ get, addStatic }) => {
     get("/zerva", `Hello, this is Zerva!`)
