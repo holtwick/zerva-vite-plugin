@@ -2,7 +2,11 @@
 
 **This is a side project of [Zerva](https://github.com/holtwick/zerva)**
 
-Integrate Zerva modules into `vite.config.ts` using this Vite Plugin.
+Integrate [Zerva](https://github.com/holtwick/zerva) modules into `vite.config.ts` using this Vite Plugin.
+
+This is perfect to use and test your server side code while developing the frontend without handling parallel launching and running server processes.
+
+The plugin already calls `useHttp` with the same port as the vite process. In fact it is the same server instance Vite uses. Custom routes can be added or sockets get bound to it.
 
 ## Get started
 
@@ -12,15 +16,18 @@ import vue from "@vitejs/plugin-vue"
 import { viteZervaPlugin } from "./src/module"
 import { useSocketIO } from "zerva-socketio"
 
-// Zerva modules
-useSocketIO()
-
 export default defineConfig({
   plugins: [
     vue(),
 
     // Make use of Zerva from inside Vite server
-    viteZervaPlugin(),
+    viteZervaPlugin(async () => {
+
+      // Zerva modules
+      useSocketIO() 
+    }),
   ],
 })
 ```
+
+See [demo](demo) for a more complex example.
