@@ -1,6 +1,6 @@
 {
   "name": "zerva-vite-plugin",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "🌱 Zerva vite plugin",
   "funding": {
     "type": "GitHub Sponsors ❤",
@@ -47,21 +47,21 @@
     "test": "jest src"
   },
   "dependencies": {
-    "zeed": "^0.5.12",
-    "zerva": "^0.4.13"
+    "zeed": "^0.6.5",
+    "zerva": "^0.4.20"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.4.13",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.6.1",
     "@types/node-fetch": "^2.5.12",
     "@vitejs/plugin-vue": "^1.4.0",
-    "@vue/compiler-sfc": "^3.1.5",
+    "@vue/compiler-sfc": "^3.2.3",
     "jest": "^27.0.6",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
-    "ts-jest": "^27.0.4",
-    "tsup": "^4.13.1",
+    "ts-jest": "^27.0.5",
+    "tsup": "^4.14.0",
     "typescript": "^4.3.5",
-    "vue-tsc": "^0.2.2"
+    "vue-tsc": "^0.2.3"
   }
 }
