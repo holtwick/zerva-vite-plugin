@@ -7,29 +7,30 @@
     "node": ">=14.13.1"
   },
   "scripts": {
-    "start": "vite",
+    "start": "NODE_OPTIONS=--enable-source-maps vite --force --clearScreen=false",
+    "dev": "vite",
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.1.4",
-    "zeed": "^0.6.5",
-    "zerva": "^0.4.23",
-    "zerva-socketio": "^0.2.3",
+    "vue": "^3.2.6",
+    "zeed": "^0.6.17",
+    "zerva": "^0.4.25",
+    "zerva-socketio": "^0.2.5",
     "zerva-vite-plugin": "link:.."
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.7.7",
     "@types/node-fetch": "^2.5.12",
-    "@vitejs/plugin-vue": "^1.4.0",
-    "@vue/compiler-sfc": "^3.2.3",
-    "jest": "^27.0.6",
+    "@vitejs/plugin-vue": "^1.6.0",
+    "@vue/compiler-sfc": "^3.2.6",
+    "jest": "^27.1.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
     "ts-jest": "^27.0.5",
     "tsup": "^4.14.0",
-    "typescript": "^4.3.5",
-    "vite": "^2.5.0",
+    "typescript": "^4.4.2",
+    "vite": "^2.5.1",
     "vue-tsc": "^0.2.3"
   }
 }
