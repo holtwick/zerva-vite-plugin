@@ -12,25 +12,25 @@
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.2.6",
-    "zeed": "^0.6.17",
-    "zerva": "^0.4.25",
-    "zerva-socketio": "^0.2.5",
+    "vue": "^3.2.8",
+    "zeed": "^0.6.22",
+    "zerva": "^0.4.27",
+    "zerva-socketio": "^0.2.9",
     "zerva-vite-plugin": "link:.."
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.7",
+    "@types/node": "^16.7.10",
     "@types/node-fetch": "^2.5.12",
     "@vitejs/plugin-vue": "^1.6.0",
-    "@vue/compiler-sfc": "^3.2.6",
+    "@vue/compiler-sfc": "^3.2.8",
     "jest": "^27.1.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "node-fetch": "^2.6.1",
     "ts-jest": "^27.0.5",
     "tsup": "^4.14.0",
     "typescript": "^4.4.2",
-    "vite": "^2.5.1",
+    "vite": "^2.5.3",
     "vue-tsc": "^0.2.3"
   }
 }
