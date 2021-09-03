@@ -15,7 +15,7 @@ import "./protocol"
 const log = Logger("app")
 log("app")
 
-const conn = ZSocketIOConnection.connect("ws://" + location.host)
+const conn = ZSocketIOConnection.connect()
 
 export default defineComponent({
   setup() {
