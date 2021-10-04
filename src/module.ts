@@ -43,26 +43,43 @@ export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
       log(`register get ${path}`)
 
       // https://vitejs.dev/guide/api-javascript.html#vitedevserver
-      // https://github.com/senchalabs/connect#readme
+      // middleware https://github.com/senchalabs/connect#readme
+      // node response https://nodejs.org/api/http.html#http_request_end_data_encoding_callback
       // @ts-ignore
       server.middlewares.use((req, res, next) => {
         if (!req.url.startsWith(path)) next()
         else {
           // custom handle request...
           log("req", req.url) // Object.keys(req))
+
+          // Static content
           if (typeof handler === "string") {
             res.end(handler)
-          } else {
+          }
+
+          // Dynamic content
+          else {
             promisify(handler({ res, req }))
               .then((result) => {
                 if (result != null) {
                   res.setHeader("Cache-Control", "no-cache")
                   res.setHeader("Access-Control-Allow-Origin", "*")
-                  if (typeof result !== "string") {
-                    res.setHeader("Content-Type", "text/json")
-                    result = JSON.stringify(result, null, 2)
+                  if (typeof result !== "number") {
+                    res.statusCode = result
+                    res.end()
+                  } else {
+                    if (typeof result === "string") {
+                      res.setHeader(
+                        "Content-Type",
+                        // @ts-ignore
+                        result.startsWith("<") ? "text/html" : "text/plain"
+                      )
+                    } else {
+                      res.setHeader("Content-Type", "text/json")
+                      result = JSON.stringify(result, null, 2)
+                    }
+                    res.end(result)
                   }
-                  res.end(result)
                 }
               })
               .catch((err) => {
