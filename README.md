@@ -13,8 +13,8 @@ The plugin already calls `useHttp` with the same port as the vite process. In fa
 ```ts
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
-import { viteZervaPlugin } from "./src/module"
 import { useSocketIO } from "zerva-socketio"
+import { viteZervaPlugin } from "./src/module"
 
 export default defineConfig({
   plugins: [
@@ -22,9 +22,8 @@ export default defineConfig({
 
     // Make use of Zerva from inside Vite server
     viteZervaPlugin(async () => {
-
       // Zerva modules
-      useSocketIO() 
+      useSocketIO()
     }),
   ],
 })

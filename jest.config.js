@@ -6,5 +6,4 @@ export default {
       useESM: true,
     },
   },
-  resolver: "jest-ts-webcompat-resolver",
 }

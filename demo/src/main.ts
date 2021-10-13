@@ -1,5 +1,9 @@
-import { activateConsoleDebug } from "zeed"
+import { Logger } from "zeed"
+const log = Logger("main")
 
-activateConsoleDebug()
+log("app starts")
 
-import("./setup").then()
+import { createApp } from "vue"
+import App from "./App.vue"
+
+createApp(App).mount("#app")
