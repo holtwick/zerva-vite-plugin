@@ -1,23 +1,23 @@
 // (C)opyright 2021 Dirk Holtwick, holtwick.it. All rights reserved.
 
+import { ViteDevServer } from "vite"
 import { Logger, LoggerNodeHandler } from "zeed"
 import {
   emit,
+  hasModule,
   httpGetHandler,
+  onInit,
   promisify,
   register,
-  setContext,
   serveStop,
-  onInit,
-  hasModule,
+  setContext,
 } from "zerva"
 
 Logger.setHandlers([
   LoggerNodeHandler({
-    // level: LogLevel.info,
     filter: "*",
     colors: true,
-    padding: 16,
+    padding: 32,
     nameBrackets: false,
     levelHelper: false,
   }),
@@ -29,7 +29,7 @@ const log = Logger(`zerva:${name}`)
 export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
   name: "vite-zerva",
   apply: "serve",
-  async configureServer(server: any) {
+  async configureServer(server: ViteDevServer) {
     console.info("Starting zerva for vite...")
 
     // A fresh start, otherwise old contexts hang around
@@ -47,7 +47,7 @@ export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
       // node response https://nodejs.org/api/http.html#http_request_end_data_encoding_callback
       // @ts-ignore
       server.middlewares.use((req, res, next) => {
-        if (!req.url.startsWith(path)) next()
+        if (!req.url?.startsWith(path)) next()
         else {
           // custom handle request...
           log("req", req.url) // Object.keys(req))
@@ -64,7 +64,7 @@ export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
                 if (result != null) {
                   res.setHeader("Cache-Control", "no-cache")
                   res.setHeader("Access-Control-Allow-Origin", "*")
-                  if (typeof result !== "number") {
+                  if (typeof result === "number") {
                     res.statusCode = result
                     res.end()
                   } else {
@@ -108,9 +108,11 @@ export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
 
     // Get started
     await emit("httpInit", {
-      app: null,
+      // @ts-ignore
+      app: undefined,
       http: server.httpServer,
       get,
+      post: get,
       addStatic(p) {
         log.info(`http.addStatic for ${p} is ignored`)
       },
