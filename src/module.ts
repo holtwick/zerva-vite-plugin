@@ -110,7 +110,7 @@ export const viteZervaPlugin: any = (setup?: () => Promise<void> | void) => ({
     await emit("httpInit", {
       // @ts-ignore
       app: undefined,
-      http: server.httpServer,
+      http: server.httpServer as any,
       get,
       post: get,
       addStatic(p) {
