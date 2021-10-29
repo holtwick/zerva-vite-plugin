@@ -1,5 +1,9 @@
 # 🌱 Zerva Vite
 
+> DEPRECATED. Please use [zerva-vite](https://github.com/holtwick/zerva-vite) instead. Thanks.
+
+---
+
 **This is a side project of [Zerva](https://github.com/holtwick/zerva)**
 
 Integrate [Zerva](https://github.com/holtwick/zerva) modules into `vite.config.ts` using this Vite Plugin.
